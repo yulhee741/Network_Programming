@@ -1,35 +1,23 @@
-days = {'January':31, 'February':28, 'March':31, 'April':30,
-        'May':31, 'June':30, 'July':31, 'August':31,
-        'September':30, 'October':31, 'November':30,
-        'December':31 }
+from random import randint
 
-print("월을 입력해 주세요.")
-month = input()
+money = 50
 
-if month in days:
-    print(month, "의 일수는: " , days[month])
-else:
-    print("월을 제대로 입력해 주세요.")
-    month = input()
-print("\n")
+while 1:
+    if money <= 0:
+        break
+    elif money >= 100:
+        break
+    else:
+        coin = randint(1,2)
+        print("동전의 앞면은 1, 뒷면은 2 입니다. 동전을 맞춰보세요!")
+        res = int(input())
+        if res == coin:
+            print("맞췄습니다! 9달러를 획득했습니다.")
+            money += 9
+            print("현재금액은", money)
+        else:
+            print("틀렸습니다! 10달러를 잃었습니다.")
+            money -= 10
+            print("현재금액은", money)
 
-res = sorted(days.items())
-print("알파벳 순서로 월 출력 : ", res)
-print("\n")
-
-print("일수가 31인 월을 출력 : ")
-for k, v in days.items(): 
-    if v == 31 : 
-        print(k)
-print("\n")
-
-print("월의 일수를 기준으로 오름차순 쌍을 출력: ")
-sorted_values = sorted(days.items(), key = lambda x : x[1])
-print(sorted_values)
-print("\n")
-
-print("월의 3자리만 입력해주세요")
-find_mon = input()
-for k, v in days.items():               
-    if k[0:3] == find_mon:
-        print(v) 
+print("게임이 종료되었습니다.")
